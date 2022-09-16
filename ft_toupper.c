@@ -1,4 +1,4 @@
-int toupper(int ch)
+int ft_toupper(int ch)
 {
   if (ch >= 97 && ch <= 122)
     ch = ch - 32;
