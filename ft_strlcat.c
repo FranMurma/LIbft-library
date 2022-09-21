@@ -1,49 +1,51 @@
-size_t strlcat  (char *dst, const char *src, size_t dstsize)
-{
-  size_t  len_d;
-  size_t  cont;
-  
-  cont = 0;
-  len_d = ft_strlen(dst); 
-  if (dstsize == 0)
-    return (len_d);
-  while ((cont < dstsize - 1) && src[cont])
-  {
-    dst[len_d + cont] = src[cont];
-    cont++;
-  }
-  return (len_d);
-}
-
-
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_stlcat.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 15:19:52 by frmurcia          #+#    #+#             */
+/*   Updated: 2022/09/21 18:03:43 by frmurcia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
+/*
+ * DESCRIPCION
+ * strcat() concatena cadenas. Toman el tamaño total del buffer destino 
+ * y garantizan la terminación NULL si hay espacio. Nota que el espacio 
+ * para el NULL debe ser incluido en dtsize.
+ * strlcat() agrega la cadena src al final de dst. 
+ * Agregará como máximo dstsize - strlen (dst) - 1 caracteres. 
+ * Luego terminará en NUL, a menos que dstsize sea 0 o que la 
+ * cadena dst original sea más larga que dstsize (en la práctica, 
+ * esto no debería suceder, ya que significa que dstsize es incorrecto 
+ * o que dst no es una cadena adecuada).
+ * RETURN
+ * strlcat() devuelven la longitud total de la cadena que intentaron 
+ * crear. Eso significa la longitud inicial de dst más la longitud de src.
+ * Si dstsize <= dst, retorna  la longitud de src + dstsize
+ *
+*/
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*s;
-	size_t	len_dst;
-	size_t	res;
-	size_t	len_src;
-	size_t	i;
+	size_t	cont;
+	size_t	len_s;
+	size_t	len_d;
 
-	s = (char *)src;
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(s);
-	res = 0;
-	i = 0;
-	if (size > len_dst)
-		res = len_src + len_dst;
-	else
-		res = len_src + size;
-	while (s[i] && (len_dst + 1) < size)
+	cont = 0;
+	len_s = ft_strlen(src);
+	len_d = ft_strlen(dst);
+	if (len_d >= dstsize)
+		return (len_s + dstsize);
+	while ((cont + len_d < dstsize -1) && src[cont])
 	{
-		dst[len_dst] = s[i];
-		len_dst++;
-		i++;
+		dst[len_d + cont] = src[cont];
+		cont++;
 	}
-	dst[len_dst] = '\0';
-	return (res);
+	dst[len_d + cont] = '\0';
+	len_d = ft_strlen(dst);
+	return (len_d + ft_strlen(&src[cont]));
 }
