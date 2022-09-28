@@ -31,3 +31,4 @@ char  *ft_strjoin(char const *s1, char const *s2)
     len_s3 = '\0';
     return (s3);
   }
+}
