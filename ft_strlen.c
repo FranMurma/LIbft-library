@@ -6,13 +6,13 @@
 /*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:44:11 by frmurcia          #+#    #+#             */
-/*   Updated: 2022/09/19 16:53:51 by frmurcia         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:53:38 by frmurcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	c;
 

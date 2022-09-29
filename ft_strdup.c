@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 18:15:46 by frmurcia          #+#    #+#             */
-/*   Updated: 2022/09/21 19:39:38 by frmurcia         ###   ########.fr       */
+/*   Created: 2022/09/26 12:39:37 by frmurcia          #+#    #+#             */
+/*   Updated: 2022/09/26 13:30:35 by frmurcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* memcpy() copia n bytes de la memoria del area src
- * a la memoria en el area dst. Si dst y src se supoerponen,
- * el comportamiento es indefinido.
- * RETURN
- *  memcpy() retorna el valor original de dst.
- *  */
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	size_t	cont;
+	char	*str_nueva;
+	int		cont;
+	int		len;
 
+	len = 0;
+	while (s1[len])
+		len++;
+	str_nueva = malloc(sizeof(char) * (len + 1));
+	if (!str_nueva)
+		return (NULL);
 	cont = 0;
-	if (!dst && !src)
-		return (0);
-	while (cont < n)
+	while (s1[cont])
 	{
-		((unsigned char *)dst)[cont] = ((unsigned char *)src)[cont];
+		str_nueva[cont] = s1[cont];
 		cont++;
 	}
-	return (dst);
+	str_nueva[cont] = '\0';
+	return (str_nueva);
 }

@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 18:15:46 by frmurcia          #+#    #+#             */
-/*   Updated: 2022/09/21 19:39:38 by frmurcia         ###   ########.fr       */
+/*   Created: 2022/09/22 19:37:34 by frmurcia          #+#    #+#             */
+/*   Updated: 2022/09/22 20:22:52 by frmurcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* memcpy() copia n bytes de la memoria del area src
- * a la memoria en el area dst. Si dst y src se supoerponen,
- * el comportamiento es indefinido.
- * RETURN
- *  memcpy() retorna el valor original de dst.
- *  */
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	cont;
+	void	*ptr;
 
-	cont = 0;
-	if (!dst && !src)
+	ptr = malloc(count * size);
+	if (!ptr)
 		return (0);
-	while (cont < n)
-	{
-		((unsigned char *)dst)[cont] = ((unsigned char *)src)[cont];
-		cont++;
-	}
-	return (dst);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

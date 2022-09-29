@@ -1,26 +1,66 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 19:32:33 by frmurcia          #+#    #+#             */
+/*   Updated: 2022/09/26 12:34:44 by frmurcia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "libft.h"
+/*
+ * memmove() copia len bytes de la cadena src a la cadena dst.
+ * las dos cadenas se pueden superponer. La copia siempre se
+ * hace de forma no destructiva.
+ *
+ * RETURN
+ * La funcion memmove() devuelve el valor original de dst.
+ */
+
+/*void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t	cont;
+
+	cont = 0;
+	if (!dst && !src)
+		return (0);
+	if (len < ft_strlen(src))
+	{
+		return (dst);
+	}
+	while (cont < len)
+	{
+		((unsigned char *)dst)[cont] = ((unsigned char *)src)[cont];
+		cont++;
+	}
+	return (dst);
+}
+*/
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned int	i;
+	size_t	cont;
 
-	if (!dst && !src)
-		return (NULL);
-	if (dst > src)
+	cont = 0;
+	if (dst == src && len >= 0)
+		return (dst);
+	if (src > dst)
 	{
-		while (len > 0)
+		while (cont < len)
 		{
-			((char *)dst)[len - 1] = ((char *)src)[len - 1];
-			len--;
+			*((char *)(dst + cont)) = *((char *)(src + cont));
+			cont++;
 		}
 	}
 	else
 	{
-		i = 0;
-		while (i < len)
+		cont = len;
+		while (cont > 0)
 		{
-			((char *)dst)[i] = ((char *)src)[i];
-			i++;
+			*((char *)(dst + cont -1)) = *((char *)(src + cont -1));
+			cont--;
 		}
 	}
 	return (dst);

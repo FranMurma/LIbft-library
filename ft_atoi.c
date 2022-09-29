@@ -1,4 +1,18 @@
-int	ft_comienzo(char *str)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 18:06:47 by frmurcia          #+#    #+#             */
+/*   Updated: 2022/09/21 18:13:48 by frmurcia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_comienzo(const char *str)
 {
 	int	cont1;
 
@@ -12,7 +26,7 @@ int	ft_comienzo(char *str)
 	return (cont1);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	cont1;
 	int	almacen;
@@ -24,7 +38,7 @@ int	ft_atoi(char *str)
 	if (str[cont1] != '\0')
 	{
 		cont1 = ft_comienzo(str);
-		while (str[cont1] == '+' || str[cont1] == '-')
+		if (str[cont1] == '+' || str[cont1] == '-')
 		{
 			if (str[cont1] == '-')
 				neg = neg * -1;
