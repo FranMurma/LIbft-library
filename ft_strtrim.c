@@ -6,7 +6,7 @@
 /*   By: frmurcia <frmurcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:03:29 by frmurcia          #+#    #+#             */
-/*   Updated: 2022/09/28 20:08:11 by frmurcia         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:12:51 by frmurcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t		end;
 	char		*s2;
 
-	start = 0;
-	end = ft_strlen(s1) -1;
 	if (!s1 || !set)
 		return (NULL);
-	while ((ft_strchr(set, s1[start]) != NULL) && s1[start])
+	start = 0;
+	end = ft_strlen(s1) -1;
+	while ((ft_strchr(set, s1[start])) && s1[start])
 		start++;
-	while ((ft_strchr(set, s1[end]) != NULL) && end >= 0)
+	while ((ft_strchr(set, s1[end])) && end >= 0)
 		end--;
 	s2 = ft_substr(s1, start, (end - start + 1));
 	if (!s2)
